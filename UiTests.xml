@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" parallel="tests">
-    <listeners>
-        <listener class-name="Retry.RetryListenerClass"/>
-    </listeners>
+        <listeners>
+            <listener class-name="Retry.RetryListenerClass"/>
+        </listeners>
 
     <test verbose="1" preserve-order="false" name="Browser">
         <parameter name="browserName" value="chrome"/>
