@@ -1,7 +1,6 @@
 # BankTransfer-Selenium-RestAssured
 BankTransfer-Selenium-RestAssured covers UI End to End Test cases of Login, Open Accounts, Funds Transfer functionality testing using Selenium Webdriver and Java. On the backend testing Rest API's with Rest Assured. 
 
-Mentioned below are the steps to execute test cases covering Login, Open Accounts, Funds Transfer functionalities.
 
 
 
@@ -98,5 +97,4 @@ file in a browser.
 
 
 
-
-### Finished! 😀
+### The goal is to cover as much application functionality as possible without repeated automation tests.  😀
