@@ -8,10 +8,10 @@ import UIElement.TextBox;
 
 public class LoginPage extends BasePage {
 
-    private TextBox userNameTextBox;
+    private final TextBox userNameTextBox;
     private TextBox passWordTextBox;
-    private Button submit;
-    private Error error;
+    private final Button submit;
+    private final Error error;
 
 
     public LoginPage() {

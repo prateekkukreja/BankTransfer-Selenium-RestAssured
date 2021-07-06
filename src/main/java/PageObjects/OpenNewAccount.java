@@ -5,13 +5,13 @@ import UIElement.*;
 
 public class OpenNewAccount extends BasePage {
 
-    private Select accountType;
-    private Select fromAccount;
-    private Button submit;
-    private ElementList newAccountID;
-    private ElementList accountId;
-    private ElementList acctType;
-    private ElementList transactions;
+    private final Select accountType;
+    private final Select fromAccount;
+    private final Button submit;
+    private final ElementList newAccountID;
+    private final ElementList accountId;
+    private final ElementList acctType;
+    private final ElementList transactions;
 
     public OpenNewAccount() {
         super(OpenNewAccount.class.getSimpleName());

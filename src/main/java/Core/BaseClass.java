@@ -28,10 +28,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.Assert;
-import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -39,7 +36,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class BaseClass {
 
-    ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     public ExtentReports extent;
     public ExtentTest extentTest;
     public ExtentHtmlReporter htmlReporter;
@@ -133,8 +130,7 @@ public abstract class BaseClass {
 
     public static String getScreenShotName(String methodName) {
         Date d = new Date();
-        String fileName = methodName + "_" + d.toString().replace(":", "_").replace(" ", "_") + ".png";
-        return fileName;
+        return methodName + "_" + d.toString().replace(":", "_").replace(" ", "_") + ".png";
     }
 
     private String takeScreenshot(String methodName) {

@@ -16,12 +16,12 @@ import java.util.Locale;
 
 public class AccountActions {
 
-    HelperActions helperActions = new HelperActions();
-    OpenNewAccount openNewAccount = new OpenNewAccount();
+    final HelperActions helperActions = new HelperActions();
+    final OpenNewAccount openNewAccount = new OpenNewAccount();
     private String type = "";
     private int amount = 0;
 
-    public boolean verifyAcctTxnDetails(WebDriver driver, int Account, String AcctType) {
+    public void verifyAcctTxnDetails(WebDriver driver, int Account, String AcctType) {
         boolean flag = false;
         try {
             Thread.sleep(3000);
@@ -49,42 +49,13 @@ public class AccountActions {
 
             Assert.assertEquals(Integer.parseInt(amt.toString()), amount);
             if (onScreenAcctType.equalsIgnoreCase(AcctType)) {
-                flag = true;
                 System.out.println("New " + AcctType + " Account creation verified");
             }
         } catch (Exception e) {
             e.printStackTrace();
             Assert.fail();
         }
-        return flag;
     }
-
-//    public boolean verifyNewSavingsAcct(WebDriver driver, int Account, String AcctType) {
-//        boolean flag = false;
-//        try {
-//            Thread.sleep(3000);
-//            WebElement xPath = driver.findElement(By.xpath("//td[@id='accountId' and @class='ng-binding']"));
-//            helperActions.waitUntilElementVisible(driver, xPath);
-//            int onScreenAcct = Integer.parseInt(xPath.getText());
-//            xPath = driver.findElement(By.xpath("//td[@id='accountType' and @class='ng-binding']"));
-//            String onScreenAcctType = xPath.getText();
-//
-//            xPath = driver.findElement(By.xpath("//td[contains(@ng-if,'Debit') and @class='ng-binding ng-scope']"));
-//            String txnAmt = xPath.getAttribute("innerHTML");
-//            NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.US);
-//            Number amt = numberFormat.parse(txnAmt);
-//            Assert.assertEquals(onScreenAcct, Account);
-//            Assert.assertEquals(Integer.parseInt(amt.toString()), 200);
-//            if (onScreenAcctType.equalsIgnoreCase(AcctType)) {
-//                flag = true;
-////                System.out.println("New " + AcctType + " Account creation verified");
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            Assert.fail();
-//        }
-//        return flag;
-//    }
 
     public boolean verifyNewAcct(WebDriver driver, int Account, String AcctType) {
         boolean flag = false;

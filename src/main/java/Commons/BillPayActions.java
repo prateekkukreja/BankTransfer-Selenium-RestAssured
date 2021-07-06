@@ -13,11 +13,11 @@ import java.util.List;
 
 public class BillPayActions {
 
-    HelperActions helperActions = new HelperActions();
-    AccountActions accountActions = new AccountActions();
+    final HelperActions helperActions = new HelperActions();
+    final AccountActions accountActions = new AccountActions();
     BillPayPage billPayPage = new BillPayPage();
 
-    String[] expected = {"payee.name", "payee.address.street", "payee.address.city", "payee.address.state",
+    final String[] expected = {"payee.name", "payee.address.street", "payee.address.city", "payee.address.state",
             "payee.address.zipCode", "payee.accountNumber", "verifyAccount", "amount"};
 
     //Generic function to check bill page elements and transaction details

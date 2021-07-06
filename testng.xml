@@ -2,24 +2,24 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" parallel="tests">
     <listeners>
-        <listener class-name="Retry.RetryListenerClass"></listener>
+        <listener class-name="Retry.RetryListenerClass"/>
     </listeners>
 
     <test verbose="1" preserve-order="false" name="Browser">
-        <parameter name="browserName" value="chrome"></parameter>
+        <parameter name="browserName" value="chrome"/>
         <classes>
-            <class name="Scenarios.CreateAndVerifyAccountsTest"></class>
-            <class name="Scenarios.BillPayFeatureTests"></class>
-            <class name="Scenarios.ValidationCheckTest"></class>
+            <class name="Scenarios.CreateAndVerifyAccountsTest"/>
+            <class name="Scenarios.BillPayFeatureTests"/>
+            <class name="Scenarios.ValidationCheckTest"/>
         </classes>
     </test>
 
     <test verbose="1" preserve-order="true" name="Headless">
-        <parameter name="browserName" value="headless"></parameter>
+        <parameter name="browserName" value="headless"/>
         <classes>
-            <class name="Scenarios.CreateAndVerifyAccountsTest"></class>
-            <class name="Scenarios.BillPayFeatureTests"></class>
-            <class name="Scenarios.ValidationCheckTest"></class>
+            <class name="Scenarios.CreateAndVerifyAccountsTest"/>
+            <class name="Scenarios.BillPayFeatureTests"/>
+            <class name="Scenarios.ValidationCheckTest"/>
         </classes>
     </test>
 

@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 // Scenario #1 && 2
 public class CreateAndVerifyAccountsTest extends BaseClass {
 
-    LoginActions login = new LoginActions();
-    AccountActions accts = new AccountActions();
+    final LoginActions login = new LoginActions();
+    final AccountActions accts = new AccountActions();
 
     @Test
     public void createAndVerifyNewAccountTest() {

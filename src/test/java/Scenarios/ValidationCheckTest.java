@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class ValidationCheckTest extends BaseClass {
 
-    LoginActions login = new LoginActions();
+    final LoginActions login = new LoginActions();
 
     @Test
     public void LoginTestValidCredsTest() {

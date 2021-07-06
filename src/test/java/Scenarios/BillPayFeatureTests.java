@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 // Scenario #3
 public class BillPayFeatureTests extends BaseClass {
 
-    LoginActions login = new LoginActions();
-    BillPayActions billPage = new BillPayActions();
-    AccountActions accts = new AccountActions();
+    final LoginActions login = new LoginActions();
+    final BillPayActions billPage = new BillPayActions();
+    final AccountActions accts = new AccountActions();
 
     //Automate the verification of Bill Page
     @Test

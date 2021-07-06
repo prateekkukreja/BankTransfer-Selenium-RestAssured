@@ -11,8 +11,8 @@ public class UIElements extends BaseClass implements WebElement {
     protected String pageName;
     private By by;
     private WebElement webElement;
-    JavascriptExecutor js;
-    WebDriver driver;
+    final JavascriptExecutor js;
+    final WebDriver driver;
 
     public UIElements(By by, String pageName, String elementName) {
         this.by = by;

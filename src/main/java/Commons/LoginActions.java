@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginActions {
 
-    LoginPage loginPage = new LoginPage();
+    final LoginPage loginPage = new LoginPage();
 
     public void loginWithValidUser(WebDriver driver) {
         try {

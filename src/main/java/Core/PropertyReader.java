@@ -3,13 +3,14 @@ package Core;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
 public class PropertyReader {
 
     private static PropertyReader prop;
-    private Properties properties;
+    private final Properties properties;
 
     private PropertyReader() {
         properties = new Properties();
@@ -39,9 +40,7 @@ public class PropertyReader {
     public List<String> getValues(String key) {
         List<String> values = new ArrayList<>();
         String[] prop = properties.getProperty(key).split(",");
-        for (String entry : prop) {
-            values.add(entry);
-        }
+        Collections.addAll(values, prop);
         return values;
     }
 }

@@ -5,13 +5,13 @@ import UIElement.*;
 
 public class BillPayPage extends BasePage {
 
-    private TextBox ZipCode;
-    private TextBox PayeeAcct;
-    private TextBox VerifyAcct;
-    private TextBox Amount;
-    private TextBox FromAcctID;
-    private TextBox phone;
-    private Button Submit;
+    private final TextBox ZipCode;
+    private final TextBox PayeeAcct;
+    private final TextBox VerifyAcct;
+    private final TextBox Amount;
+    private final TextBox FromAcctID;
+    private final TextBox phone;
+    private final Button Submit;
 
     public BillPayPage() {
         super(PageObjects.OpenNewAccount.class.getSimpleName());
