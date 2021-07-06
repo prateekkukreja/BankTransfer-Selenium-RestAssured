@@ -138,7 +138,6 @@ public class AccountActions {
             e.printStackTrace();
             Assert.fail();
         }
-//        return CONSTANTCODES.SAVINGS_Acct;
     }
 
     public void getCurrentUserTxnDetails(String AcctType) {

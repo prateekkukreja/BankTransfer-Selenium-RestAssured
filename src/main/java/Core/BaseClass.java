@@ -104,7 +104,6 @@ public abstract class BaseClass {
                     Thread.sleep(3000);
                     extentTest.fail("<b><font color=red>" + "Screenshot of failure" + "</font></b>",
                             MediaEntityBuilder.createScreenCaptureFromPath(path).build());
-//                    cleanDir();
                 } catch (IOException e) {
                     e.printStackTrace();
                     extentTest.fail("Test failed, cannot attach SS");
@@ -124,7 +123,6 @@ public abstract class BaseClass {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        extent.flush();
         getDriver().quit();
     }
 
@@ -147,19 +145,11 @@ public abstract class BaseClass {
         return path;
     }
 
-    @AfterClass
-    public void terminateDriver() {
-//        cleanDir();
+    @AfterSuite
+    public void terminate() {
         extent.flush();
         getDriver().quit();
     }
-
-    @AfterTest
-    public void terminate() {
-//        cleanDir();
-        getDriver().quit();
-    }
-
 
     public static synchronized void initDirs() {
         try {
