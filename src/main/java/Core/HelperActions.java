@@ -1,11 +1,6 @@
 package Core;
 
 import ConfigManagers.LocalConfigs;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.BufferedWriter;
@@ -16,61 +11,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class HelperActions {
-
-    public void waitUntilElementVisible(WebDriver driver, WebElement element) {
-        try {
-            Thread.sleep(3000);
-            WebDriverWait wait = new WebDriverWait(driver, Integer.parseInt(LocalConfigs.MAX_WAIT_TIME));
-            wait.until(ExpectedConditions.visibilityOf(element));
-        } catch (Exception e) {
-            e.printStackTrace();
-            Assert.fail();
-        }
-    }
-
-    public void waitUntilElementClickable(WebDriver driver, WebElement element) {
-        try {
-            Thread.sleep(3000);
-            WebDriverWait wait = new WebDriverWait(driver, Integer.parseInt(LocalConfigs.MAX_WAIT_TIME));
-            wait.until(ExpectedConditions.elementToBeClickable(element));
-        } catch (Exception e) {
-            e.printStackTrace();
-            Assert.fail();
-        }
-    }
-
-    public void SelectDropDown(WebDriver driver, WebElement xPath) {
-        try {
-            Thread.sleep(3000);
-            Select objSel = new Select(xPath);
-            List<WebElement> weblist = objSel.getOptions();
-            int iCnt = weblist.size();
-            Random num = new Random();
-            int iSelect = num.nextInt(iCnt);
-            driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-            objSel.selectByIndex(iSelect);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Assert.fail();
-        }
-    }
-
-    public void SelectDropDownByValue(WebDriver driver, WebElement xPath, String value) {
-        try {
-            Thread.sleep(3000);
-            Select objSel = new Select(xPath);
-            driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-            objSel.selectByValue(value);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Assert.fail();
-        }
-    }
 
     public void writeToFile(String str) {
         try {
@@ -78,6 +23,20 @@ public class HelperActions {
             BufferedWriter out = new BufferedWriter(new FileWriter(file, true));
             out.write(str + "\n");
             out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail();
+        }
+    }
+
+    public void updateInFile(String str) {
+        String existToken = getTokenFromFile();
+        String targetFile = LocalConfigs.ACCOUNTS_DIR + "Accounts.txt";
+        try (Stream<String> lines = Files.lines(Paths.get(targetFile))) {
+            List<String> replaced = lines
+                    .map(line -> line.replaceAll("JSESSIONID:" + existToken, str))
+                    .collect(Collectors.toList());
+            Files.write(Paths.get(targetFile), replaced);
         } catch (Exception e) {
             e.printStackTrace();
             Assert.fail();
@@ -98,5 +57,42 @@ public class HelperActions {
             Assert.fail();
         }
         return list;
+    }
+
+    public String getKeyFromFile(String input) {
+        String outStr;
+        List<String> profile = readFile();
+        outStr = profile.stream()
+                .filter(i -> i.contains(input))
+                .findFirst()
+                .orElse(null);
+        String[] arr = Objects.requireNonNull(outStr).split(":");
+        return arr[1];
+    }
+
+    public String getTokenFromFile() {
+        String token = null;
+        try {
+            List<String> list = readFile();
+            String[] arr = list.get(0).split(":");
+            token = arr[1];
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail();
+        }
+        return token;
+    }
+
+    public String getBaseAcctFromFile() {
+        String acct = null;
+        try {
+            List<String> list = readFile();
+            String[] arr = list.get(1).split(":");
+            acct = arr[1];
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail();
+        }
+        return acct;
     }
 }
